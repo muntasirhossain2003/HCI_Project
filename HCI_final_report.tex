@@ -11,6 +11,8 @@
 \usepackage{array}
 \usepackage{hyperref}
 \usepackage{pdfcomment}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, fit, backgrounds}
 
 \acmConference
 [Human-Computer Interaction]
@@ -480,6 +482,68 @@ constrained language layer converts the top-ranked attributions into a
 short justification; and the decision-support interface presents score,
 justification and disclaimer together before installation.
 
+Figure~\ref{fig:arch} shows how the stages are distributed across the two
+sides of the system. The device is responsible only for selecting the
+application and rendering the result; extraction, classification,
+attribution and explanation all run server-side, where the model and the
+language layer can be updated without shipping a new client.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  node distance=6mm,
+  box/.style   = {draw, rounded corners=2pt, align=center,
+                  text width=0.62\columnwidth, inner sep=5pt},
+  stage/.style = {draw, fill=black!4, rounded corners=1.5pt, align=center,
+                  text width=0.46\columnwidth, inner sep=3.2pt,
+                  font=\footnotesize},
+  flow/.style  = {-{Latex[length=2mm]}, thick},
+  lbl/.style   = {font=\scriptsize\itshape, inner sep=1.5pt}
+]
+
+% --- client: selection ---
+\node[box] (app) {\textbf{Android Application}\\[1pt]
+  \footnotesize User selects an application};
+
+% --- server pipeline ---
+\node[stage, below=13mm of app] (extract) {APK feature extraction};
+\node[stage, below=of extract]  (clf)     {LightGBM risk classifier};
+\node[stage, below=of clf]      (shap)    {SHAP attribution};
+\node[stage, below=of shap]     (llm)     {Qwen LLM explanation layer};
+
+\draw[flow] (extract) -- (clf);
+\draw[flow] (clf) -- (shap);
+\draw[flow] (shap) -- (llm);
+
+\begin{scope}[on background layer]
+  \node[draw, rounded corners=2pt, fill=black!1,
+        fit=(extract)(clf)(shap)(llm),
+        inner sep=7pt, inner ysep=13pt] (server) {};
+\end{scope}
+\node[anchor=north, font=\small\bfseries, yshift=-2.5pt]
+  at (server.north) {Analysis Server};
+
+% --- client: report ---
+\node[box, below=13mm of server] (ui) {\textbf{Android Interface}\\[1pt]
+  \footnotesize Low / Medium / High risk,\\[-1pt]
+  \footnotesize score and explanation};
+
+% --- cross-boundary flows ---
+\draw[flow] (app) -- node[lbl, right] {APK / application information}
+  (server.north);
+\draw[flow] (server.south) -- node[lbl, right] {risk score + explanation}
+  (ui);
+
+\end{tikzpicture}
+\caption{System architecture. The device selects the application and
+displays the result; feature extraction, risk classification, SHAP
+attribution and explanation generation run on the analysis server. Each
+stage consumes only the output of the previous one, so every sentence the
+user reads is traceable back to an attributed feature.}
+\label{fig:arch}
+\end{figure}
+
 The separation between the training corpus and the runtime input is
 deliberate. The model is trained on a labelled corpus of Android
 application feature vectors, whereas at run time features are extracted
@@ -543,6 +607,15 @@ data handling and evaluation use scikit-learn~\cite{pedregosa2011scikit}.
 The model is trained on a public corpus of static Android application
 features, in which each application is represented as a binary vector over
 requested permissions, declared intents and API-related behaviours.
+
+The explanation layer is a Qwen large language model, prompted with the
+risk band and the ranked SHAP attributions and instructed to restate them
+within a fixed length. It receives no other information about the
+application, which is what makes the traceability requirement (NFR4)
+enforceable rather than aspirational: the model has nothing to draw on
+except what the classifier and the attribution produced. The disclaimer
+text is held outside the generated region so that it cannot be rephrased
+or softened.
 
 \textbf{Implementation limitations.} The analysis is static. Behaviour that
 appears only at run time, code loaded dynamically, and obfuscated or
