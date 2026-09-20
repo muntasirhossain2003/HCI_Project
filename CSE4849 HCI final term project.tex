@@ -1,0 +1,302 @@
+\documentclass[sigconf]{acmart}
+
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\pagestyle{plain}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{hyperref}
+
+\acmConference
+[Human-Computer Interaction]
+{Term Project: Human-Centered AI System (Final Report)}
+{2026}
+{IUT, OIC, Dhaka, Bangladesh}
+
+\title{[Project Title: Subject -- Problem -- Solution Approach]}
+
+\author{Author One}
+\affiliation{
+  \institution{Department of Computer Science and Engineering\\
+  Islamic University of Technology (IUT), OIC}
+  \city{Dhaka}
+  \country{Bangladesh}
+}
+\email{author1@iut-dhaka.edu}
+
+\author{Author Two}
+\affiliation{
+  \institution{Department of Computer Science and Engineering\\
+  Islamic University of Technology (IUT), OIC}
+  \city{Dhaka}
+  \country{Bangladesh}
+}
+\email{author2@iut-dhaka.edu}
+
+\author{Author Three}
+\affiliation{
+  \institution{Department of Computer Science and Engineering\\
+  Islamic University of Technology (IUT), OIC}
+  \city{Dhaka}
+  \country{Bangladesh}
+}
+\email{author3@iut-dhaka.edu}
+
+\author{Hasan Mahmud}
+\affiliation{
+  \institution{SSL, Department of Computer Science and Engineering\\
+  Islamic University of Technology (IUT), OIC}
+  \city{Dhaka}
+  \country{Bangladesh}
+}
+\email{hasan@iut-dhaka.edu}
+\authornote{Corresponding author.}
+
+\begin{document}
+
+\begin{abstract}
+Write this section at the end after completing the report. Briefly describe the problem, the human-centered AI solution, the methodology (requirements, design, and evaluation), and the key findings. Clearly state what is new in your work and why it is important.
+\end{abstract}
+
+\keywords{Human-Centered AI, Interaction Design, Usability, Explainable AI, HCI}
+
+\maketitle
+
+% ====================================================
+\section{Introduction}
+
+In this section, describe the problem context and motivation of your project. Clearly explain the real-world problem you are addressing and why it is important. Discuss the limitations of existing systems and justify the need for your proposed solution. You must clearly state the contribution of your work. Avoid writing a general description; instead, focus on argument-driven writing explaining what gap your work addresses.
+
+% ====================================================
+\section{Related Work}
+
+Discuss existing research related to your problem. You must include relevant concepts from Human-Centered AI \cite{shneiderman2022hcai}, interaction design principles \cite{sharp2019interaction}, and goal-directed design \cite{cooper2014aboutface}. Clearly explain how your work is different from or improves upon existing approaches. Identify the research gap explicitly.
+
+% ====================================================
+\section{Method (Integrating Assignment 1 and 2)}
+
+This section integrates the work you have done in Assignment 1 (requirements analysis) and Assignment 2 (design and prototyping). You must clearly show how your understanding of users influenced your design decisions.
+
+\subsection{Requirement Analysis (Assignment 1)}
+
+Describe how you identified user needs. Include:
+- The users and stakeholders involved
+- Data gathering methods (interviews, surveys, observation) with justification
+- Analysis method (affinity diagram or thematic analysis)
+- Personas and scenarios
+- Task analysis (if applicable)
+- Functional and non-functional requirements
+- Requirements–goal traceability matrix
+
+Clearly explain how your findings led to the requirements.
+
+\subsection{Design and Prototyping (Assignment 2)}
+
+Describe your design process. Include:
+- Design rationale (why design decisions were made)
+- Sketches, storyboards, and wireframes
+- Interaction flow
+- Tools used (Figma, Balsamiq, etc.)
+
+All design decisions must be directly linked to requirements identified in Assignment 1.
+
+\subsection{Human-Centered AI Considerations}
+
+Explain how your system follows Human-Centered AI principles. Specifically describe:
+- How users understand AI decisions (explainability)
+- How users control or override AI (human-in-the-loop)
+- How trust and transparency are supported
+
+This section is mandatory for HCAI projects.
+
+% ====================================================
+% ====================================================
+\section{System Design and Implementation}
+
+In this section, describe the final system or prototype developed based on the requirements identified in Assignment 1 and the design decisions made in Assignment 2. The purpose of this section is to clearly communicate how your system works and how it supports user tasks. The description should be sufficiently detailed so that a reader can understand the system without additional explanation.
+
+\subsection{System Overview}
+
+Provide an overview of your system. Describe:
+- The overall purpose of the system
+- The main components or modules
+- The workflow or interaction pipeline
+
+You may include a block diagram or workflow diagram to illustrate how different components of the system interact with each other.
+
+\subsection{Functional Design and Features}
+
+Describe the key features and functionalities of your system. For each feature:
+- Explain what the feature does
+- Explain which user requirement (from Assignment 1) it satisfies
+- Explain how it supports user goals and scenarios
+
+Ensure that there is a clear traceability between system features and requirements.
+
+\subsection{Interface Design and Interaction Flow}
+
+Describe the user interface and interaction process. Include:
+- Screens, layouts, or UI components
+- Navigation flow between different parts of the system
+- Step-by-step interaction sequence for performing key tasks
+
+You should explain how users interact with the system and how the interface supports usability and user experience goals.
+
+\subsection{Human-Centered AI Implementation}
+
+Explain how AI is integrated into your system. Specifically describe:
+- What role AI plays in the system (e.g., recommendation, prediction, automation)
+- How the system communicates AI decisions to users (explainability)
+- How users can control or override AI behavior (human-in-the-loop)
+- How trust, transparency, and reliability are supported
+
+This subsection must clearly demonstrate how your system follows Human-Centered AI principles.
+
+\subsection{Implementation Details (If Applicable)}
+
+If you have implemented a working prototype, briefly describe:
+- Technologies or tools used
+- System architecture or components
+- Any limitations in implementation
+
+This section should focus on explaining the system at a conceptual level rather than low-level programming details.
+% ====================================================
+% ====================================================
+\section{Evaluation}
+
+In this section, you will describe how the effectiveness and usability of your system were evaluated. The goal of this evaluation is to assess whether your system meets the user needs identified in Assignment 1 and whether the design decisions made in Assignment 2 are effective in practice. Your evaluation should be systematic, clearly structured, and justified.
+
+\subsection{Experimental Design}
+
+Describe the overall design of your evaluation study. Clearly explain:
+- Who participated in the study (number of participants, background, selection criteria)
+- The context in which the evaluation was conducted (lab study, remote study, controlled or natural setting)
+- The tasks that participants were asked to perform (these tasks should reflect realistic usage scenarios derived from your personas and scenarios)
+- The experimental conditions, if any (e.g., comparison between systems, with/without AI features)
+- The independent and dependent variables
+
+You should justify your design choices and explain why this evaluation setup is appropriate for your system.
+
+\subsection{Procedure}
+
+Describe the step-by-step procedure followed during the evaluation. This should include:
+- How participants were introduced to the system
+- Any training or briefing provided
+- The sequence of tasks performed
+- Data collection process (e.g., observation, logging, questionnaires, interviews)
+
+The procedure should be described clearly enough so that another researcher could replicate your study.
+
+\subsection{Evaluation Metrics}
+
+Explain how you measured system performance and user experience. You should include both quantitative and qualitative measures:
+
+\textbf{Quantitative measures may include:}
+- Task completion time
+- Error rates
+- Success rate
+- Number of interactions or steps
+
+\textbf{Qualitative measures may include:}
+- User satisfaction
+- Perceived usability
+- Trust in AI system
+- User feedback and comments
+
+Explain why these metrics were chosen and how they relate to your usability and UX goals defined earlier.
+
+\subsection{Analysis Approach}
+
+Describe how you analyzed the collected data. This may include:
+- Statistical summaries (averages, comparisons)
+- Thematic analysis of user feedback
+- Identification of patterns or recurring issues
+
+You should clearly explain how insights were derived from the data.
+
+% ====================================================
+% ====================================================
+\section{Results}
+
+In this section, present the findings obtained from your evaluation. The purpose of this section is to report what was observed during the evaluation without providing detailed interpretation. You should present the results in a clear, structured, and objective manner.
+
+\subsection{Quantitative Results}
+
+Present measurable outcomes of your evaluation. These may include:
+- Task completion time
+- Error rates
+- Success rates
+- Number of interactions or steps required
+
+You should organize the results using tables, charts, or structured descriptions where appropriate. Clearly compare performance across different tasks or conditions (if applicable). Highlight any noticeable differences or trends in the data.
+
+\subsection{Qualitative Findings}
+
+Describe the qualitative observations gathered during the evaluation. These may include:
+- User feedback and comments
+- Observed difficulties or confusion
+- User behavior during task execution
+- Perceived usability and trust in the system
+
+You may group similar observations into themes or categories to improve clarity.
+
+\subsection{Comparative Observations (If Applicable)}
+
+If your evaluation involves multiple conditions (e.g., with vs. without AI, different interface versions), compare the results across these conditions. Highlight differences in performance, usability, or user perception.
+
+\subsection{Summary of Key Findings}
+
+Summarize the most important findings from both quantitative and qualitative results. Clearly state:
+- What worked well
+- What issues were observed
+- Any unexpected outcomes
+
+This subsection should provide a concise overview of the results, but detailed interpretation should be reserved for the next section (Discussion).
+% ====================================================
+\section{Discussion}
+
+Interpret your results. Explain:
+- Why certain results occurred
+- Which design decisions worked or failed
+- User behavior insights
+
+This section is critical for demonstrating understanding.
+
+% ====================================================
+\section{Implications for Design}
+
+Based on your findings, extract general design insights. These should not be limited to your system only. Provide:
+- Design guidelines
+- Recommendations for future systems
+- Lessons learned
+
+This section is very important for CHI-level work.
+
+% ====================================================
+\section{Limitations}
+
+Discuss limitations of your work, including:
+- Sample size
+- Methodological constraints
+- System limitations
+
+Honest reflection is expected.
+
+% ====================================================
+\section{Conclusion}
+
+Summarize your work. Include:
+- What you developed
+- Key findings
+- Contributions
+- Future work directions
+
+% ====================================================
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
